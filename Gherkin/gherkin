@@ -1,0 +1,22 @@
+Feature: Login functionality
+  As a user
+  I want to be able to log in to the application
+  So that I can access my account
+
+  Scenario: Successful login
+    Given the user provides valid login credentials
+    When the user submits the login form
+    Then the system should respond with status code 200
+    And the system should display a message "Login successful"
+
+  Scenario: Failed login due to invalid credentials
+    Given the user provides incorrect login credentials
+    When the user submits the login form
+    Then the system should respond with status code 401
+    And the system should display an error message "Invalid credentials"
+
+  Scenario: Failed login due to missing credentials
+    Given the user does not provide any login credentials
+    When the user submits the login form
+    Then the system should respond with status code 400
+    And the system should display an error message "Invalid credentials"
