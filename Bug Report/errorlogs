@@ -1,0 +1,108 @@
+========================================================================= test session starts =========================================================================
+platform darwin -- Python 3.9.6, pytest-7.4.0, pluggy-1.2.0
+rootdir: /Users/ayushr/butterfly/bank-backend
+plugins: flask-1.2.0
+collected 3 items
+
+test_app.py FFF                                                                                                                                                 [100%]
+
+============================================================================== FAILURES ===============================================================================
+_________________________________________________________________________ test_login_success __________________________________________________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_login_success(client):
+        # Replace with your actual username and password for successful login testing
+        data = {'username': 'user', 'password': 'user123'}
+        response = client.post('/login', data=json.dumps(data), content_type='application/json')
+>       assert response.status_code == 200
+E       assert 401 == 200
+E        +  where 401 = <WrapperTestResponse streamed [401 UNAUTHORIZED]>.status_code
+
+test_app.py:15: AssertionError
+_________________________________________________________________________ test_login_failure __________________________________________________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_login_failure(client):
+        # Replace with incorrect username and password for login failure testing
+        data = {'username': 'hacker', 'password': 'hacker123'}
+        response = client.post('/login', data=json.dumps(data), content_type='application/json')
+>       assert response.status_code == 401
+E       assert 200 == 401
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+
+test_app.py:22: AssertionError
+___________________________________________________________________ test_login_missing_credentials ____________________________________________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_login_missing_credentials(client):
+        # Test for missing username and password
+        data = {}  # Empty data for missing credentials
+        response = client.post('/login', data=json.dumps(data), content_type='application/json')
+>       assert response.status_code == 400
+E       assert 200 == 400
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+
+test_app.py:29: AssertionError
+======================================================================= short test summary info =======================================================================
+FAILED test_app.py::test_login_success - assert 401 == 200
+FAILED test_app.py::test_login_failure - assert 200 == 401
+FAILED test_app.py::test_login_missing_credentials - assert 200 == 400
+========================================================================== 3 failed in 0.05s ==========================================================================
+ayushr@USAU-AYUSHR-INTERN7 bank-backend % clear
+ayushr@USAU-AYUSHR-INTERN7 bank-backend % python3 -m pytest
+========================================================================= test session starts =========================================================================
+platform darwin -- Python 3.9.6, pytest-7.4.0, pluggy-1.2.0
+rootdir: /Users/ayushr/butterfly/bank-backend
+plugins: flask-1.2.0
+collected 3 items
+
+test_app.py FFF                                                                                                                                                 [100%]
+
+============================================================================== FAILURES ===============================================================================
+_________________________________________________________________________ test_login_success __________________________________________________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_login_success(client):
+        # Replace with your actual username and password for successful login testing
+        data = {'username': 'user', 'password': 'user123'}
+        response = client.post('/login', data=json.dumps(data), content_type='application/json')
+>       assert response.status_code == 200
+E       assert 401 == 200
+E        +  where 401 = <WrapperTestResponse streamed [401 UNAUTHORIZED]>.status_code
+
+test_app.py:15: AssertionError
+_________________________________________________________________________ test_login_failure __________________________________________________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_login_failure(client):
+        # Replace with incorrect username and password for login failure testing
+        data = {'username': 'hacker', 'password': 'hacker123'}
+        response = client.post('/login', data=json.dumps(data), content_type='application/json')
+>       assert response.status_code == 401
+E       assert 200 == 401
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+
+test_app.py:22: AssertionError
+___________________________________________________________________ test_login_missing_credentials ____________________________________________________________________
+
+client = <FlaskClient <Flask 'app'>>
+
+    def test_login_missing_credentials(client):
+        # Test for missing username and password
+        data = {}  # Empty data for missing credentials
+        response = client.post('/login', data=json.dumps(data), content_type='application/json')
+>       assert response.status_code == 400
+E       assert 200 == 400
+E        +  where 200 = <WrapperTestResponse streamed [200 OK]>.status_code
+
+test_app.py:29: AssertionError
+======================================================================= short test summary info =======================================================================
+FAILED test_app.py::test_login_success - assert 401 == 200
+FAILED test_app.py::test_login_failure - assert 200 == 401
+FAILED test_app.py::test_login_missing_credentials - assert 200 == 400
+========================================================================== 3 failed in 0.04s ==========================================================================

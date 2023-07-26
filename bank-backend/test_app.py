@@ -17,7 +17,7 @@ def test_login_success(client):
 
 def test_login_failure(client):
     # Replace with incorrect username and password for login failure testing
-    data = {'username': 'invalid_user', 'password': 'invalid_pass'}
+    data = {'username': 'hacker', 'password': 'hacker123'}
     response = client.post('/login', data=json.dumps(data), content_type='application/json')
     assert response.status_code == 401
     assert b'Invalid credentials' in response.data

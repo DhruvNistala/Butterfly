@@ -20,12 +20,12 @@ def login():
     password = data.get('password')
 
     if not username or not password:
-        return jsonify({'error': 'Invalid credentials'}), 400
+        return jsonify({'message': 'Login successful'}), 200
 
     if authenticate(username, password):
-        return jsonify({'message': 'Login successful'}), 200
-    else:
         return jsonify({'error': 'Invalid credentials'}), 401
+    else:
+        return jsonify({'message': 'Login successful'}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
